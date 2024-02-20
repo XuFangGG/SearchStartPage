@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bing Search</title>
+    <meta charset="utf-8">
+    <style>
+        /* 位置 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-top: -90px;
+        }
+        /* 下载源码位置 */
+        .download-link {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        color: rgba(255, 255, 255, 0.082); /* 增加透明度 */
+        }
+    </style>
+</head>
+<div id="clock" style="position: absolute; top: 50%; transform: translateY(-50%); text-align: center; font-size: 3em; color: rgba(234, 225, 225, 0.867);"></div>
+
+<script>
+    function updateClock() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+</script>
+<!-- 核心 -->
+<body>
+    <form action="https://www.bing.com/search" target="_blank" method="get">
+        <input type="text" name="q" placeholder="输入搜索内容..." required>
+    </form>
+    <!-- 下载源码 -->
+    <a href="index.html" download class="download-link">下载源码</a>
+</body>
+</html>
+<!-- 美化 -->
+<style>
+    /* 效果 */
+
+    /* 时钟发光 */
+    #clock {
+            text-shadow: 0 0 10px #f3f3f3, 0 0 20px #000000, 0 0 30px #ffffff, 0 0 40px #85dd32;
+        }
+        #clock {
+            animation: clockAnimation 1s infinite;
+        }
+        
+    /* 动画 */
+
+    /* ease-out指的是动画的结束部分，ease-in指的是动画的开始部分
+       out的效果是开始很快然后越来越慢 in的效果是开始很慢越来越快 */
+
+       /* 下落 */
+    @keyframes dropDown {
+        0% {
+            transform: translateY(-225px);
+            animation-timing-function: ease-out;
+        }
+        90% {
+            transform: translateY(-82px);
+            animation-timing-function: ease-out;
+        }
+        100% {
+            transform: translateY(-90px);
+        }
+    }
+
+    /* 添加超级无敌吊炸天的shadow动画背景 */
+    body {
+        animation: gradient 5s infinite;
+        background-size: 400% 400%;
+    }
+
+    @keyframes gradient {
+        0% {
+            background: #0f0c29;
+        }
+        25% {
+            background: #302b63;
+        }
+        50% {
+            background: #24243e;
+        }
+        75% {
+            background: #302b63;
+        }
+        100% {
+            background: #0f0c29;
+        }
+    }
+        /* 展开 */
+    @keyframes expandWidth {
+        0% {
+            width: 100px;
+        }
+        100% {
+            width: 240px;
+        }
+    }
+/* 选择器 */
+    form {
+        animation: dropDown 1.4s;
+        animation-fill-mode: forwards;
+    }
+    
+    input[type="text"] {
+        border: none;
+        padding: 10px;
+        border-radius: 20px;
+        outline: none;
+        width: 100px;
+        box-shadow: 0 0 15px 4px rgba(155, 152, 152, 0.782);
+        animation: expandWidth 2s forwards;
+    }
+
+    /* 背景 */
+    body {
+            background-color: #0c0c0c; /* 黑色背景 */
+            color: #b4c2dc; /* 白色文本 */
+            font-size: 24px; /* 大小为24像素 */
+        }
+        
+</style>
